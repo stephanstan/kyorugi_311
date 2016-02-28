@@ -65,6 +65,10 @@ spring:
         template:
             check-template-location: false
 
+server:
+    'contextPath': '/kyorugi'
+
+
 ---
 grails:
     mime:
