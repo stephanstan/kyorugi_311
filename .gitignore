@@ -37,3 +37,5 @@
 /grails-app/assets/images/
 .asscache
 .gradle
+.idea/
+kyorugi_311.iml
