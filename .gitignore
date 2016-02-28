@@ -31,3 +31,7 @@
 
 # "temporary" build files
 /target
+
+# artifacts you won't be changing anytime soon
+/gradle/wrapper/gradle-wrapper.jar
+/grails-app/assets/images/
