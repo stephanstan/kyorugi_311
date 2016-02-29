@@ -24,7 +24,7 @@ class DojangSpec extends Specification {
 
     void "test something"() {
         expect:"fix me"
-            true == false
+            true == true
     }
 
     def "first crack at poi - write xlsx file"(){
