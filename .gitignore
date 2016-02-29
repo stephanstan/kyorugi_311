@@ -39,3 +39,4 @@
 .gradle
 .idea/
 kyorugi_311.iml
+build/
