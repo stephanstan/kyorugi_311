@@ -75,3 +75,7 @@ assets {
     minifyJs = true
     minifyCss = true
 }
+
+task makePretty(type: Delete) {
+    delete  'Test.xlsx'
+}
