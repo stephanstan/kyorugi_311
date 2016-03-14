@@ -80,3 +80,17 @@ assets {
 task makePretty(type: Delete) {
     delete  'Test.xlsx'
 }
+
+jar {
+    dependsOn "docs"
+    from("${buildDir}/docs/manual") {
+        into "public/docs"
+    }
+}
+
+war {
+    dependsOn "docs"
+    from("${buildDir}/docs") {
+        into "WEB-INF/classes/public/docs"
+    }
+}
