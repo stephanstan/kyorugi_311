@@ -1,9 +1,6 @@
 introduction:
   title: Introduction
-  changes: Change Log
 gettingStarted: Getting Started
-configuration:
-  title: Configuration
-  build:
-    title: Build Config
-    controllers: Specifying Controllers
+whereDoIFind:
+  title: Where do I Find
+    
