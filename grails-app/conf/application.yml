@@ -54,6 +54,12 @@ grails:
     spring:
         transactionManagement:
             proxies: false
+    doc:
+        authors: Stephan Stan
+        footer: footer from application_yml
+        subtitle: grails and git in action
+        title: Kyorugi Project
+
 info:
     app:
         name: '@info.app.name@'
@@ -124,3 +130,4 @@ grails:
 endpoints:
     jmx:
         unique-names: true
+

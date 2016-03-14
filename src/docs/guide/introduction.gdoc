@@ -1,1 +1,25 @@
-Aseem test instroduction
+Kyorugi - Korean word for Sparring.  Goal of this application is to create a Taekwondo tournamment management software.
+
+First we have to learn some tools.
+* [grails - web application framework | https://grails.org/index.html]
+** [grails create-app|https://grails.github.io/grails-doc/latest/guide/gettingStarted.html#creatingAnApplication]
+** [Grails create-functional-test |http://grails.github.io/grails-doc/latest/ref/Command%20Line/create-functional-test.html]
+* [gradle - build framework|https://gradle.org/gradle-download/]
+** [Gradle User Guide|https://docs.gradle.org/current/userguide/userguide.html]
+** [Gradle forum|https://discuss.gradle.org/]
+* [git - distributed code repository | https://github.com]
+** [Github Help|https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/]
+** [Stephn Stan Git Repositories|https://github.com/stephanstan?tab=repositories]
+* [Google Code Spock|https://code.google.com/archive/p/spock/]
+* [Introduction to Spock|https://dzone.com/articles/introduction-spock]
+* [Geb very groovy browswer automation|http://www.gebish.org/]
+** [Book of Geb Introduction|http://www.gebish.org/manual/current/]
+** [geb - web page testing framework | http://www.gebish.org/manual/current/#configuration]]
+** [Tutorial Geb integration for Grails|https://grails.org/plugin/geb]
+** [Inline geb scripting |http://acodediary.com/inline-geb-scripting]
+* java - language
+* groovy language
+* database management
+* [Grails Project Documentation|https://grails.github.io/grails-doc/latest/guide/conf.html#docengine]
+	
+* [Kyorugi dev instance localhost |http://localhost:8080/kyorugi/static/index.html]
