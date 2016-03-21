@@ -14,7 +14,7 @@ First we have to learn some tools.
 * [Introduction to Spock|https://dzone.com/articles/introduction-spock]
 * [Geb very groovy browswer automation|http://www.gebish.org/]
 ** [Book of Geb Introduction|http://www.gebish.org/manual/current/]
-** [geb - web page testing framework | http://www.gebish.org/manual/current/#configuration]]
+** [geb - web page testing framework | http://www.gebish.org/manual/current/#configuration]
 ** [Tutorial Geb integration for Grails|https://grails.org/plugin/geb]
 ** [Inline geb scripting |http://acodediary.com/inline-geb-scripting]
 * java - language
