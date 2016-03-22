@@ -8,7 +8,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import com.stephanstan.pontus.excel.Library;
-
+import geb.Browser
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
@@ -50,6 +50,19 @@ class DojangSpec extends Specification {
         then:
 
         result == true
+    }
+
+    def "first geb test"(){
+        Browser.drive {
+            go "http://gebish.org"
+
+            assert title == "Geb - Very Groovy Browser Automation"
+
+            $("#sidebar .sidemenu a", text: "jQuery-like API").click()
+
+            assert $("#main h1")*.text() == ["Navigating Content", "Form Control Shortcuts"]
+            assert $("#sidebar .sidemenu a", text: "jQuery-like API").parent().hasClass("selected")
+        }
     }
 }
 
