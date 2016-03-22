@@ -52,17 +52,6 @@ class DojangSpec extends Specification {
         result == true
     }
 
-    def "first geb test"(){
-        Browser.drive {
-            go "http://gebish.org"
 
-            assert title == "Geb - Very Groovy Browser Automation"
-
-            $("#sidebar .sidemenu a", text: "jQuery-like API").click()
-
-            assert $("#main h1")*.text() == ["Navigating Content", "Form Control Shortcuts"]
-            assert $("#sidebar .sidemenu a", text: "jQuery-like API").parent().hasClass("selected")
-        }
-    }
 }
 
