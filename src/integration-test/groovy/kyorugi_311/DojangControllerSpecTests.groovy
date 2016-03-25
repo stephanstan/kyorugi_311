@@ -12,7 +12,7 @@ import geb.spock.*
  */
 @Integration
 @Rollback
-class DojangControllerSpec extends GebSpec {
+class DojangControllerSpecTests extends GebSpec {
 
     def setup() {
     }
