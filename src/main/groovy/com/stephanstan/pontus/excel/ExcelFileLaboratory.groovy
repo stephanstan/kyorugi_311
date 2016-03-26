@@ -22,7 +22,7 @@ class ExcelFileLaboratory {
 
     boolean createXlsxFile(){
 
-        String excelFileName = "Test.xlsx"//name of excel file
+        String excelFileName = "docs/excel/Test.xlsx"//name of excel file
 
         String sheetName = "Sheet1";//name of sheet
 
@@ -46,9 +46,7 @@ class ExcelFileLaboratory {
         FileOutputStream fileOut = new FileOutputStream(excelFileName)
 
         //write this workbook to an Outputstream.
-        wb.write(fileOut);
-        fileOut.flush();
-        fileOut.close();
+        writeOutExcelWorkbook(wb, fileOut)
 
         true
     }
@@ -77,10 +75,7 @@ class ExcelFileLaboratory {
 
         FileOutputStream fileOut = new FileOutputStream(excelFileName)
 
-        //write this workbook to an Outputstream.
-        wb.write(fileOut);
-        fileOut.flush();
-        fileOut.close();
+        writeOutExcelWorkbook(wb, fileOut)
 
         true
     }
@@ -111,11 +106,15 @@ class ExcelFileLaboratory {
         FileOutputStream fileOut = new FileOutputStream(excelFileName)
 
         //write this workbook to an Outputstream.
+        writeOutExcelWorkbook(wb, fileOut)
+
+        true
+    }
+
+    private void writeOutExcelWorkbook(XSSFWorkbook wb, FileOutputStream fileOut) {
         wb.write(fileOut);
         fileOut.flush();
         fileOut.close();
-
-        true
     }
 
 }

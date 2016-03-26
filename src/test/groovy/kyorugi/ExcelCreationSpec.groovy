@@ -8,7 +8,7 @@ import com.stephanstan.pontus.excel.ExcelFileLaboratory
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
 @TestFor(Dojang)
-class DojangSpec extends Specification {
+class ExcelCreationSpec extends Specification {
 
     def setup() {
     }
