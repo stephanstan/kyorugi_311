@@ -54,9 +54,42 @@ class Library {
     }
     boolean createXlsxFile_01(){
 
-        String excelFileName = "Test.xlsx"//name of excel file
+        String excelFileName = "docs/excel/Test_01.xlsx"//name of excel file
 
         String sheetName = "Sheet1";//name of sheet
+
+        XSSFWorkbook wb = ExcelHelper.createWorkbook()
+        XSSFSheet sheet = wb.createSheet(sheetName)
+
+        //iterating r number of rows
+        for (int r=0;r < 5; r++ )
+        {
+            XSSFRow row = sheet.createRow(r)
+
+            //iterating c number of columns
+            for (int c=0;c < 5; c++ )
+            {
+                XSSFCell cell = row.createCell(c)
+
+                cell.setCellValue("Cell "+r+" "+c)
+            }
+        }
+
+        FileOutputStream fileOut = new FileOutputStream(excelFileName)
+
+        //write this workbook to an Outputstream.
+        wb.write(fileOut);
+        fileOut.flush();
+        fileOut.close();
+
+        true
+    }
+
+    boolean createDojangBlinger_01(){
+
+        String excelFileName = "docs/excel/Dojang_Blinger.xlsx"//name of excel file
+
+        String sheetName = "Dojang";//name of sheet
 
         XSSFWorkbook wb = ExcelHelper.createWorkbook()
         XSSFSheet sheet = wb.createSheet(sheetName)

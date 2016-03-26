@@ -40,4 +40,4 @@
 .idea/
 kyorugi_311.iml
 build/
-Test.xlsx
+*.xlsx

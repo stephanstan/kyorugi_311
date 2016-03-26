@@ -52,6 +52,18 @@ class DojangSpec extends Specification {
         result == true
     }
 
+    def "poi advocate - write xlsx with ExcelHelper - name worksheet Dojang"(){
+
+        setup:
+        Library lib = new Library()
+        when:
+        def result = lib.createDojangBlinger_01()
+
+        then:
+
+        result == true
+    }
+
 
 }
 
