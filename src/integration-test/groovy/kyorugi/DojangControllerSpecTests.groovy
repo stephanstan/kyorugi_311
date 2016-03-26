@@ -1,10 +1,8 @@
-package kyorugi_311
+package kyorugi
 
-import geb.Browser
 import grails.test.mixin.integration.Integration
 import grails.transaction.*
 import kyorugi.Dojang
-import spock.lang.*
 import geb.spock.*
 
 /**
@@ -24,9 +22,12 @@ class DojangControllerSpecTests extends GebSpec {
         when: "The home page is visited"
         go 'http://localhost:8080/kyorugi/'
 
-        then: "The title is correct"
+        then:
+        "The title is correct"
         /*  	$('title').text() == "Welcome to Grails" */
-        $('title').text() == ""
+        println($('title').text())
+        assert title == "Welcome to Grails"
+        /*$('title').text() == "" */
     }
 
     void "first geb test"() {
