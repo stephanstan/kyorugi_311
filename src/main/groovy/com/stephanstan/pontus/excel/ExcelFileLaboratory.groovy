@@ -15,7 +15,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook
  *
  * @author Owner, @date 1/5/16 11:22 PM
  */
-class Library {
+class ExcelFileLaboratory {
     boolean someLibraryMethod() {
         true
     }

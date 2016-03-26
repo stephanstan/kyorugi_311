@@ -2,13 +2,7 @@ package kyorugi
 
 import grails.test.mixin.TestFor
 import spock.lang.Specification
-
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import com.stephanstan.pontus.excel.Library;
-import geb.Browser
+import com.stephanstan.pontus.excel.ExcelFileLaboratory
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
@@ -30,9 +24,9 @@ class DojangSpec extends Specification {
     def "first crack at poi - write xlsx file"(){
 
         setup:
-        Library lib = new Library()
+        ExcelFileLaboratory  lab = new ExcelFileLaboratory()
         when:
-        def result = lib.createXlsxFile()
+        def result = lab.createXlsxFile()
 
         then:
 
@@ -43,9 +37,9 @@ class DojangSpec extends Specification {
     def "next crack at poi - write xlsx with ExcelHelper"(){
 
         setup:
-        Library lib = new Library()
+        ExcelFileLaboratory lab = new ExcelFileLaboratory()
         when:
-        def result = lib.createXlsxFile_01()
+        def result = lab.createXlsxFile_01()
 
         then:
 
@@ -55,9 +49,9 @@ class DojangSpec extends Specification {
     def "poi advocate - write xlsx with ExcelHelper - name worksheet Dojang"(){
 
         setup:
-        Library lib = new Library()
+        ExcelFileLaboratory lab = new ExcelFileLaboratory()
         when:
-        def result = lib.createDojangBlinger_01()
+        def result = lab.createDojangBlinger_01()
 
         then:
 
