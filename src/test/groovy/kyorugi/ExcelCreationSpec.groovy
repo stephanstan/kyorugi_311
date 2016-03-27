@@ -58,6 +58,16 @@ class ExcelCreationSpec extends Specification {
         result == true
     }
 
+    def "poi advocate - write xlsx with blinger features - name worksheet Dojang"(){
 
+        setup:
+        ExcelFileLaboratory lab = new ExcelFileLaboratory()
+        when:
+        def result = lab.createDojangBlinger_02()
+
+        then:
+
+        result == true
+    }
 }
 

@@ -31,7 +31,7 @@ class DojangControllerSpec extends Specification {
 
         then:"The model is correctly created"
             model.dojang!= null
-        model.dojang.name != null
+        model.dojang.name == null
     }
 
     void "Test the save action correctly persists an instance"() {

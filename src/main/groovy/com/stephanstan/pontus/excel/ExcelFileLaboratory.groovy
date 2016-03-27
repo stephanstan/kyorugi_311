@@ -4,7 +4,10 @@ package com.stephanstan.pontus.excel
  * Created by Owner on 2/28/2016.
  */
 import com.stephanstan.pontus.excel.ExcelHelper
+import org.apache.poi.ss.usermodel.CellStyle
+import org.apache.poi.ss.usermodel.IndexedColors
 import org.apache.poi.xssf.usermodel.XSSFCell
+import org.apache.poi.xssf.usermodel.XSSFFont
 import org.apache.poi.xssf.usermodel.XSSFRow
 import org.apache.poi.xssf.usermodel.XSSFSheet
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
@@ -111,6 +114,64 @@ class ExcelFileLaboratory {
         true
     }
 
+    boolean createDojangBlinger_02(){
+
+        String excelFileName = "docs/excel/Dojang_Blinger_02.xlsx"//name of excel file
+
+        String sheetName = "Dojang";//name of sheet
+
+        XSSFWorkbook wb = ExcelHelper.createWorkbook()
+        XSSFSheet sheet = wb.createSheet(sheetName)
+
+        // create first row that contains the header
+            XSSFRow row = sheet.createRow(0)
+
+        // http://www.concretepage.com/apache-api/how-to-set-background-and-font-color-in-xlsx-using-poi-in-java
+        CellStyle style = wb.createCellStyle()
+        style.setFillBackgroundColor(IndexedColors.BLACK.getIndex());
+        style.setFillPattern(CellStyle.SOLID_FOREGROUND);
+
+        def XSSFFont  font = wb.createFont();
+        font.setColor(IndexedColors.WHITE.getIndex());
+        style.setFont(font);
+
+        // create first colunm header - Ignore Row
+            XSSFCell cell = row.createCell(0)
+            cell.setCellValue("Ignore Row")
+        cell.setCellStyle(style)
+
+        // create 2nd column - Name - parameter from the domain object Dojang
+        cell = row.createCell(1)
+        cell.setCellStyle(style)
+
+        cell.setCellValue("Name")
+
+        FileOutputStream fileOut = new FileOutputStream(excelFileName)
+
+        //write this workbook to an Outputstream.
+        writeOutExcelWorkbook(wb, excelFileName)
+
+        true
+    }
+
+    /**
+     *  better version
+     * @param wb
+     * @param fileName
+     */
+    private void writeOutExcelWorkbook(XSSFWorkbook wb, String fileName )
+    {
+        FileOutputStream fileOut = new FileOutputStream(fileName);
+        wb.write(fileOut);
+        fileOut.flush();
+        fileOut.close();
+    }
+
+    /**
+     * deprecated
+     * @param wb
+     * @param fileOut
+     */
     private void writeOutExcelWorkbook(XSSFWorkbook wb, FileOutputStream fileOut) {
         wb.write(fileOut);
         fileOut.flush();
