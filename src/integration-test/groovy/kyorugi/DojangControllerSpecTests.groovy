@@ -1,9 +1,13 @@
 package kyorugi
 
+import com.stephanstan.pontus.excel.ExcelFileLaboratory
 import grails.test.mixin.integration.Integration
 import grails.transaction.*
 import kyorugi.Dojang
 import geb.spock.*
+import org.apache.poi.xssf.usermodel.XSSFCell
+import org.apache.poi.xssf.usermodel.XSSFRow
+import org.apache.poi.xssf.usermodel.XSSFWorkbook
 
 /**
  * See http://www.gebish.org/manual/current/ for more instructions
@@ -68,10 +72,10 @@ class DojangControllerSpecTests extends GebSpec {
         then: "new entry is saved and can be found in the database"
         master.errors.errorCount == 0
         master.id != null
-       // println(master.name)
+        // println(master.name)
 
-       // def List list
-       //  = Dojang.findAll()
+        // def List list
+        //  = Dojang.findAll()
 
         println "count of Dojang list: " + Dojang.findAll().size()
         assert Dojang.findAll().size() == 3
@@ -82,8 +86,8 @@ class DojangControllerSpecTests extends GebSpec {
 
         // order is not guaranteed
 //        assert Dojang.findAll().get(0).name == "Red Phoenix"
-  //      assert Dojang.findAll().get(0).name == "Precision Taekwondo"
-    //    assert Dojang.findAll().get(0).name == "Stephan Stan"
+        //      assert Dojang.findAll().get(0).name == "Precision Taekwondo"
+        //    assert Dojang.findAll().get(0).name == "Stephan Stan"
     }
 
 
@@ -105,13 +109,25 @@ class DojangControllerSpecTests extends GebSpec {
 
         println "count of Dojang list: " + Dojang.list().size()
         assert Dojang.list().size() == 3
-
-     //   println Doijang.findAll().get(0).name
-      //  println Dojang.findAll().get(1).name
-      //  println Dojang.findAll().get(2).name
-
- //       assert Dojang.findAll().get(0).name == "Red Phoenix"
-   //     assert Dojang.findAll().get(0).name == "Precision Taekwondo"
-     //   assert Dojang.findAll().get(0).name == "Stephan Stan"
     }
+
+    void "Get a list pass it to someone that can make a spreadsheet"() {
+        given: "a list"
+
+     //   dojang = Dojang.list(sort:"name", order:"asc")
+
+        when: "create a blinger"
+               def ExcelFileLaboratory lab = new ExcelFileLaboratory()
+        XSSFWorkbook wb = lab.createAnEmptyDojangBlinger()
+
+        XSSFRow row = wb.getSheet("Dojang").createRow(1)
+        XSSFCell cell = row.createCell(1).setCellValue(Dojang.list(max:1, sort: "name").get(0).name )
+        then: "send the spreadsheet out as a file"
+
+        lab.writeExcelWorkbook(wb,"docs/excel/DojangBlinger_888.xlsx")
+
+        //println "count of Dojang list: " + Dojang.list().size()
+        //assert Dojang.list().size() == 3
+    }
+
 }

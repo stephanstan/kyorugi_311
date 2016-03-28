@@ -69,5 +69,23 @@ class ExcelCreationSpec extends Specification {
 
         result == true
     }
+
+    /**
+     * Sheetname - Dojang
+     * has
+     * columns: Ignore Row, Name
+     * top row - white font, black background
+     */
+    def "poi advocate - create a blank Dojang - name worksheet Dojang"(){
+
+        setup:
+        ExcelFileLaboratory lab = new ExcelFileLaboratory()
+        when:
+        def result = lab.createAnEmptyDojangBlinger()
+
+        then:
+        assert result.getSheet("Dojang").getRow(0).getCell(0).getStringCellValue() == "Ignore Row"
+        assert result.getSheet("Dojang").getRow(0).getCell(1).getStringCellValue() == "Name"
+    }
 }
 

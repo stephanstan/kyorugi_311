@@ -149,17 +149,56 @@ class ExcelFileLaboratory {
         FileOutputStream fileOut = new FileOutputStream(excelFileName)
 
         //write this workbook to an Outputstream.
-        writeOutExcelWorkbook(wb, excelFileName)
+        writeExcelWorkbook(wb, excelFileName)
 
         true
     }
+
+    /**
+     * create a workbook
+     * dress up the workbook
+     *
+     */
+    public XSSFWorkbook  createAnEmptyDojangBlinger()
+     {
+         XSSFWorkbook wb = ExcelHelper.createWorkbook()
+         String sheetName = "Dojang";//name of sheet
+         XSSFSheet sheet = wb.createSheet(sheetName)
+
+         // create first row that contains the header
+         XSSFRow row = sheet.createRow(0)
+
+         // http://www.concretepage.com/apache-api/how-to-set-background-and-font-color-in-xlsx-using-poi-in-java
+         CellStyle style = wb.createCellStyle()
+         style.setFillBackgroundColor(IndexedColors.BLACK.getIndex());
+         style.setFillPattern(CellStyle.SOLID_FOREGROUND);
+
+         def XSSFFont  font = wb.createFont();
+         font.setColor(IndexedColors.WHITE.getIndex());
+         style.setFont(font);
+
+         // create first colunm header - Ignore Row
+         XSSFCell cell = row.createCell(0)
+         cell.setCellValue("Ignore Row")
+         cell.setCellStyle(style)
+
+         // create 2nd column - Name - parameter from the domain object Dojang
+         cell = row.createCell(1)
+         cell.setCellStyle(style)
+
+         cell.setCellValue("Name")
+
+         return wb
+     }
+
+
 
     /**
      *  better version
      * @param wb
      * @param fileName
      */
-    private void writeOutExcelWorkbook(XSSFWorkbook wb, String fileName )
+    public void writeExcelWorkbook(XSSFWorkbook wb, String fileName )
     {
         FileOutputStream fileOut = new FileOutputStream(fileName);
         wb.write(fileOut);
