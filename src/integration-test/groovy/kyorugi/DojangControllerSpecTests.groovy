@@ -115,17 +115,17 @@ class DojangControllerSpecTests extends GebSpec {
     void "Get a list pass it to someone that can make a spreadsheet"() {
         given: "a list"
 
-     //   dojang = Dojang.list(sort:"name", order:"asc")
+        //   dojang = Dojang.list(sort:"name", order:"asc")
 
         when: "create a blinger"
-               def ExcelFileLaboratory lab = new ExcelFileLaboratory()
+        def ExcelFileLaboratory lab = new ExcelFileLaboratory()
         XSSFWorkbook wb = ExcelHelper.createAnEmptyDojangBlinger()
 
         XSSFRow row = wb.getSheet("Dojang").createRow(1)
-        XSSFCell cell = row.createCell(1).setCellValue(Dojang.list(max:1, sort: "name").get(0).name )
+        XSSFCell cell = row.createCell(1).setCellValue(Dojang.list(max: 1, sort: "name").get(0).name)
         then: "send the spreadsheet out as a file"
 
-        lab.writeExcelWorkbook(wb,"docs/excel/DojangBlinger_888.xlsx")
+        lab.writeExcelWorkbook(wb, "docs/excel/DojangBlinger_888.xlsx")
 
         //println "count of Dojang list: " + Dojang.list().size()
         //assert Dojang.list().size() == 3
@@ -140,15 +140,63 @@ class DojangControllerSpecTests extends GebSpec {
         def ExcelFileLaboratory lab = new ExcelFileLaboratory()
         XSSFWorkbook wb = ExcelHelper.createAnEmptyDojangBlinger()
 
-        for (int r=0;r < Dojang.list().size(); r++ )
-        {
-            XSSFRow row = wb.getSheet("Dojang").createRow(r+1)
-            XSSFCell cell = row.createCell(1).setCellValue(Dojang.list(sort: "name").get(r).name )
+        for (int r = 0; r < Dojang.list().size(); r++) {
+            XSSFRow row = wb.getSheet("Dojang").createRow(r + 1)
+            XSSFCell cell = row.createCell(1).setCellValue(Dojang.list(sort: "name").get(r).name)
         }
 
         then: "send the spreadsheet out as a file"
 
-        lab.writeExcelWorkbook(wb,"docs/excel/DojangBlinger_889.xlsx")
+        lab.writeExcelWorkbook(wb, "docs/excel/DojangBlinger_889.xlsx")
+
+        //println "count of Dojang list: " + Dojang.list().size()
+        //assert Dojang.list().size() == 3
+    }
+
+
+    void "load many dojangs and then export data - Dojang"() {
+        given: "a list"
+
+        (new Dojang(name: 'Stephan Stan')).save()
+
+        (new Dojang(name: 'Athabasca Champion')).save()
+        (new Dojang(name: 'Berwyn Tiger Taekwondo')).save()
+        (new Dojang(name: 'Bowman\' s Taekwondo ')).save()
+        (new Dojang(name: 'Calgary Taekwondo Academy')).save()
+        (new Dojang(name: 'Calgary Taekwondo Academy - North Club')).save()
+        (new Dojang(name: 'Champion Gym')).save()
+        (new Dojang(name: 'Champion Taekwondo - Red Deer')).save()
+        (new Dojang(name: 'Chan Lee\' s Taekwondo ')).save()
+        (new Dojang(name: 'Cobra Taekwondo')).save()
+        (new Dojang(name: 'Edmonton Olympic Taekwondo')).save()
+        (new Dojang(name: 'Elite Taekwondo Edmonton')).save()
+        (new Dojang(name: 'Fire Dragon Taekwondo')).save()
+        (new Dojang(name: 'Folding Mountain Taekwondo')).save()
+        (new Dojang(name: '4Point Taekwondo Inc.')).save()
+        (new Dojang(name: 'Gaulton\' s Taekwondo ')).save()
+        (new Dojang(name: 'Golden Phoenix Taekwondo')).save()
+        (new Dojang(name: 'Grande Prairie Taekwondo School')).save()
+        (new Dojang(name: 'Grand Master K.H. Min Taekwondo')).save()
+        (new Dojang(name: 'Griffin Taekwondo')).save()
+        (new Dojang(name: 'High Level Taekwondo Academy')).save()
+        (new Dojang(name: 'High Prairie Tiger Taekwondo')).save()
+        (new Dojang(name: 'Iron Tiger Taekwondo')).save()
+
+                                //   dojang = Dojang.list(sort:"name", order:"asc")
+
+                                when: "create a blinger"
+        def ExcelFileLaboratory lab = new ExcelFileLaboratory()
+        XSSFWorkbook wb = ExcelHelper.createAnEmptyDojangBlinger()
+
+        for (int r = 0; r < Dojang.list().size(); r++) {
+            XSSFRow row = wb.getSheet("Dojang").createRow(r + 1)
+            XSSFCell cell = row.createCell(1).setCellValue(Dojang.list(sort: "name").get(r).name)
+        }
+
+        then:
+        "send the spreadsheet out as a file"
+
+        lab.writeExcelWorkbook(wb, "docs/excel/DojangBlinger_890.xlsx")
 
         //println "count of Dojang list: " + Dojang.list().size()
         //assert Dojang.list().size() == 3
