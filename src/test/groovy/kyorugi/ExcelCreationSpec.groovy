@@ -1,5 +1,6 @@
 package kyorugi
 
+import com.stephanstan.pontus.excel.ExcelHelper
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 import com.stephanstan.pontus.excel.ExcelFileLaboratory
@@ -81,7 +82,7 @@ class ExcelCreationSpec extends Specification {
         setup:
         ExcelFileLaboratory lab = new ExcelFileLaboratory()
         when:
-        def result = lab.createAnEmptyDojangBlinger()
+        def result = ExcelHelper.createAnEmptyDojangBlinger()
 
         then:
         assert result.getSheet("Dojang").getRow(0).getCell(0).getStringCellValue() == "Ignore Row"

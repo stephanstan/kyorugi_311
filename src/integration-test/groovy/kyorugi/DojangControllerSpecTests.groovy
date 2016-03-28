@@ -1,6 +1,7 @@
 package kyorugi
 
 import com.stephanstan.pontus.excel.ExcelFileLaboratory
+import com.stephanstan.pontus.excel.ExcelHelper
 import grails.test.mixin.integration.Integration
 import grails.transaction.*
 import kyorugi.Dojang
@@ -118,13 +119,36 @@ class DojangControllerSpecTests extends GebSpec {
 
         when: "create a blinger"
                def ExcelFileLaboratory lab = new ExcelFileLaboratory()
-        XSSFWorkbook wb = lab.createAnEmptyDojangBlinger()
+        XSSFWorkbook wb = ExcelHelper.createAnEmptyDojangBlinger()
 
         XSSFRow row = wb.getSheet("Dojang").createRow(1)
         XSSFCell cell = row.createCell(1).setCellValue(Dojang.list(max:1, sort: "name").get(0).name )
         then: "send the spreadsheet out as a file"
 
         lab.writeExcelWorkbook(wb,"docs/excel/DojangBlinger_888.xlsx")
+
+        //println "count of Dojang list: " + Dojang.list().size()
+        //assert Dojang.list().size() == 3
+    }
+
+    void "make a blinger from Kyorugi applcation data - Dojang"() {
+        given: "a list"
+
+        //   dojang = Dojang.list(sort:"name", order:"asc")
+
+        when: "create a blinger"
+        def ExcelFileLaboratory lab = new ExcelFileLaboratory()
+        XSSFWorkbook wb = ExcelHelper.createAnEmptyDojangBlinger()
+
+        for (int r=0;r < Dojang.list().size(); r++ )
+        {
+            XSSFRow row = wb.getSheet("Dojang").createRow(r+1)
+            XSSFCell cell = row.createCell(1).setCellValue(Dojang.list(sort: "name").get(r).name )
+        }
+
+        then: "send the spreadsheet out as a file"
+
+        lab.writeExcelWorkbook(wb,"docs/excel/DojangBlinger_889.xlsx")
 
         //println "count of Dojang list: " + Dojang.list().size()
         //assert Dojang.list().size() == 3
