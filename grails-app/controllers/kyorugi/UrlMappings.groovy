@@ -1,4 +1,4 @@
-package kyorugi_311
+package kyorugi
 
 class UrlMappings {
 
