@@ -31,7 +31,7 @@ class DojangControllerSpecTests extends GebSpec {
         "The title is correct"
         /*  	$('title').text() == "Welcome to Grails" */
         println($('title').text())
-        assert title == "Welcome to Grails"
+        assert title == "Dojang List"
         /*$('title').text() == "" */
     }
 
